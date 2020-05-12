@@ -1,11 +1,10 @@
 import pygame
 
-pygame.display.init()
-pygame.joystick.init()
-pygame.joystick.Joystick(0).init()
-
-
 def setup():
+    
+    pygame.display.init()
+    pygame.joystick.init()
+    pygame.joystick.Joystick(0).init()
     # Prints the joystick's name
     JoyName = pygame.joystick.Joystick(0).get_name()
     print("Name of the joystick:")
