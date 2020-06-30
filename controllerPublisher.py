@@ -4,7 +4,8 @@ import rospy
 from std_msgs.msg import Int16MultiArray, Float64MultiArray, String, Int32, Int32MultiArray, MultiArrayLayout, MultiArrayDimension
 import os
 import numpy as np
-from rosroverxbox.msg import IntList
+#rosroverxbox is the name of the package, and Num is the name of the .msg file
+from rosroverxbox.msg import Num
 
 def setup():
     #I don't want pygame to display anything, so simply creating a "dummy" server for pygame to display on
