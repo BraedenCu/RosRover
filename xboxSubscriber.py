@@ -2,6 +2,7 @@
 import rospy
 import rospy
 from std_msgs.msg import String,Int32,Int32MultiArray,MultiArrayLayout,MultiArrayDimension, Int16MultiArray
+#rosroverxbox is the name of the package, and IntList is the name of the .msg file
 from rosroverxbox.msg import IntList
 from adafruit_servokit import ServoKit
 
