@@ -12,7 +12,7 @@ def init():
 
 def callbackButtons(data):
     #runs everytime button changes
-    
+    pass
 
 def callbackAxis(data):
     #runs everytime axis changes
