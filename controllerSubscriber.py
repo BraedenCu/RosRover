@@ -105,7 +105,10 @@ def callback0(data):
     GPIO.output(in6,GPIO.LOW)
     GPIO.output(in7,GPIO.LOW)
     GPIO.output(in8,GPIO.LOW)
-    
+
+    #3,4 and 5,6 are a pair
+    #1,2 and 7,8 are a pair
+
     if arr[0] == 1:
         #move forward
         GPIO.output(in2,GPIO.HIGH)
@@ -132,7 +135,7 @@ def callback0(data):
         #turn left
         GPIO.output(in1,GPIO.HIGH)
         GPIO.output(in4,GPIO.HIGH)
-        GPIO.output(in5,GPIO.HIGH)
+        GPIO.output(in6,GPIO.HIGH)
         GPIO.output(in8,GPIO.HIGH)
 
     elif arr[0] == 0 or arr[1] == 0:  
