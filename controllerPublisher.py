@@ -20,30 +20,26 @@ def publishData():
     key_arr = [0, 0, 0, 0]
 
     while not rospy.is_shutdown():
-        
+
         x = input()
 
         if x=='w':
             key_arr[0] = 1
-            key_arr[1] = 1
-        
-        elif x=='a':
-            key_arr[0] = 2
-            key_arr[1] = 2
         
         elif x=='s':
             key_arr[0] = 2
+        
+        elif x=='a':
             key_arr[1] = 1
         
         elif x=='d':
-            key_arr[0] = 2
-            key_arr[1] = 1
+            key_arr[1] = 2
         
         else:
             key_arr[0] = 0
             key_arr[1] = 0
         
-        #rospy.loginfo(key_arr)
+        rospy.loginfo(key_arr)
 
         pub.publish(key_arr)
 
