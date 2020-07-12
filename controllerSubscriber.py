@@ -82,26 +82,6 @@ def init():
     speed3.start(75)
     speed4.start(75)
 
-def forward(x1,y1):
-    GPIO.output(x1,GPIO.LOW)
-    GPIO.output(y1,GPIO.HIGH)
-
-def turnRight(x1,x2,y1,y2):
-    GPIO.output(x1,GPIO.LOW)
-    GPIO.output(x2,GPIO.HIGH)
-    GPIO.output(y1,GPIO.HIGH)
-    GPIO.output(y2,GPIO.LOW)
-
-def turnLeft(x1,x2,y1,y2):
-    GPIO.output(x1,GPIO.HIGH)
-    GPIO.output(x2,GPIO.LOW)
-    GPIO.output(y1,GPIO.LOW)
-    GPIO.output(y2,GPIO.HIGH)
-
-def backward(x1,x2):
-    GPIO.output(x1,GPIO.HIGH)
-    GPIO.output(x2,GPIO.LOW)
-
 def stop(x1,x2):
     GPIO.output(x1,GPIO.LOW)
     GPIO.output(x2,GPIO.LOW)
@@ -116,34 +96,44 @@ def callback0(data):
     speed2.ChangeDutyCycle(75)
     speed3.ChangeDutyCycle(75)
     speed4.ChangeDutyCycle(75)
+
+    GPIO.output(in1,GPIO.LOW)
+    GPIO.output(in2,GPIO.LOW)
+    GPIO.output(in3,GPIO.LOW)
+    GPIO.output(in4,GPIO.LOW)
+    GPIO.output(in5,GPIO.LOW)
+    GPIO.output(in6,GPIO.LOW)
+    GPIO.output(in7,GPIO.LOW)
+    GPIO.output(in8,GPIO.LOW)
     
     if arr[0] == 1:
         #move forward
-        stop(in1,in2)
-        stop(in3,in4)
-        stop(in5,in6)
-        stop(in7,in8)
-        forward(in2,in1)
-        forward(in4,in3)
-        forward(in6,in5)
-        forward(in8,in7)
+        GPIO.output(in2,GPIO.HIGH)
+        GPIO.output(in4,GPIO.HIGH)
+        GPIO.output(in6,GPIO.HIGH)
+        GPIO.output(in8,GPIO.HIGH)
+ 
 
     elif arr[0] == 2:
         #move backwards
-        forward(in1,in2)
-        forward(in3,in4)
-        backward(in5,in6)
-        backward(in7,in8)
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in3,GPIO.HIGH)
+        GPIO.output(in5,GPIO.HIGH)
+        GPIO.output(in7,GPIO.HIGH)
 
     elif arr[1] == 1:
         #turn right
-        turnRight(in1,in2,in5,in6)
-        turnRight(in3,in4,in7,in8)
+        GPIO.output(in2,GPIO.HIGH)
+        GPIO.output(in3,GPIO.HIGH)
+        GPIO.output(in5,GPIO.HIGH)
+        GPIO.output(in7,GPIO.HIGH)
 
     elif arr[1] == 2:
         #turn left
-        turnRight(in5,in6,in1,in2)
-        turnRight(in7,in8,in4,in5)
+        GPIO.output(in1,GPIO.HIGH)
+        GPIO.output(in4,GPIO.HIGH)
+        GPIO.output(in5,GPIO.HIGH)
+        GPIO.output(in8,GPIO.HIGH)
 
     elif arr[0] == 0 or arr[1] == 0:  
         #stop  
