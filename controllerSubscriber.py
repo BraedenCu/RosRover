@@ -119,6 +119,10 @@ def callback0(data):
     
     if arr[0] == 1:
         #move forward
+        stop(in1,in2)
+        stop(in3,in4)
+        stop(in5,in6)
+        stop(in7,in8)
         forward(in2,in1)
         forward(in4,in3)
         forward(in6,in5)
@@ -161,5 +165,5 @@ if __name__ == '__main__':
     try:
         init()
         listener()
-    except rospy.ROSInterruptException:w
+    except rospy.ROSInterruptException:
         GPIO.cleanup()
