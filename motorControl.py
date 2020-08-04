@@ -81,10 +81,14 @@ def init():
     speed2.start(75)
     speed3.start(75)
     speed4.start(75)
+    
+def stop(x1,x2):
+    GPIO.output(x1,GPIO.LOW)
+    GPIO.output(x2,GPIO.LOW)
 
 def callback0(data):
     #runs everytime button changes
-    arr = data.drive
+    arr = data.data
     print(".")
 
     #set speed to 75 percent

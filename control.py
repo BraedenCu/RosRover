@@ -9,13 +9,13 @@ def publishData():
 
     pub_arr_key = Int32MultiArray()
 
-    pub = rospy.Publisher('driver', IntList, queue_size=10)
+    pub = rospy.Publisher('driver', Int32MultiArray, queue_size=10)
 
     rospy.init_node('driver', anonymous=True)
 
     rate = rospy.Rate(10)
     #motor speed values
-    key_arr = [0, 0]
+    key_arr = [0,0]
 
     while not rospy.is_shutdown():
 
@@ -40,10 +40,12 @@ def publishData():
         else:
             key_arr[0] = 0
             key_arr[1] = 0
+            
+        array_for_publishing = Int32MultiArray(data=key_arr)
         
-        rospy.loginfo(key_arr)
+        rospy.loginfo(array_for_publishing)
 
-        pub.publish(key_arr)
+        pub.publish(array_for_publishing)
 
 
         rate.sleep()
