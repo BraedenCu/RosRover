@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3.6
 import rospy
 import rospy
@@ -8,6 +7,8 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 def init():
+
+    GPIO.setwarnings(False)
 
     global in1 
     global in2
@@ -81,10 +82,6 @@ def init():
     speed2.start(75)
     speed3.start(75)
     speed4.start(75)
-    
-def stop(x1,x2):
-    GPIO.output(x1,GPIO.LOW)
-    GPIO.output(x2,GPIO.LOW)
 
 def callback0(data):
     #runs everytime button changes
@@ -110,40 +107,44 @@ def callback0(data):
     #1,2 and 7,8 are a pair
 
     if arr[0] == 1:
-        #move forward
-        GPIO.output(in2,GPIO.HIGH)
-        GPIO.output(in4,GPIO.HIGH)
-        GPIO.output(in6,GPIO.HIGH)
-        GPIO.output(in8,GPIO.HIGH)
- 
 
-    elif arr[0] == -1:
-        #move backwards
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in8,GPIO.LOW)
         GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in3,GPIO.HIGH)
-        GPIO.output(in5,GPIO.HIGH)
         GPIO.output(in7,GPIO.HIGH)
 
-    elif arr[1] == 1:
-        #turn right
+
+    if arr[0] == -1:
+
         GPIO.output(in2,GPIO.HIGH)
-        GPIO.output(in3,GPIO.HIGH)
-        GPIO.output(in5,GPIO.HIGH)
-        GPIO.output(in7,GPIO.HIGH)
-
-    elif arr[1] == -1:
-        #turn left
-        GPIO.output(in1,GPIO.HIGH)
-        GPIO.output(in4,GPIO.HIGH)
-        GPIO.output(in6,GPIO.HIGH)
         GPIO.output(in8,GPIO.HIGH)
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in7,GPIO.LOW)
 
-    elif arr[0] == 0 or arr[1] == 0:  
+    if arr[1] == 1:
+        
+        GPIO.output(in5,GPIO.HIGH)
+        GPIO.output(in3,GPIO.HIGH)
+        GPIO.output(in6,GPIO.LOW)
+        GPIO.output(in4,GPIO.LOW)
+
+    if arr[1] == -1:
+        
+        GPIO.output(in5,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in6,GPIO.HIGH)
+        GPIO.output(in4,GPIO.HIGH)
+        
+    if arr[0] == 0 or arr[1] == 0:  
         #stop  
-        stop(in1,in2)
-        stop(in3,in4)
-        stop(in5,in6)
-        stop(in7,in8)
+        GPIO.output(in1,GPIO.LOW)
+        GPIO.output(in2,GPIO.LOW)
+        GPIO.output(in3,GPIO.LOW)
+        GPIO.output(in4,GPIO.LOW)
+        GPIO.output(in5,GPIO.LOW)
+        GPIO.output(in6,GPIO.LOW)
+        GPIO.output(in7,GPIO.LOW)
+        GPIO.output(in8,GPIO.LOW)
 
 def listener():
 
@@ -160,3 +161,4 @@ if __name__ == '__main__':
         listener()
     except rospy.ROSInterruptException:
         GPIO.cleanup()
+  

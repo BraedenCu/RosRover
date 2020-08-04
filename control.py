@@ -26,16 +26,16 @@ def publishData():
             key_arr[1] = 1
         
         elif x=='s':
-            key_arr[0] = 1
+            key_arr[0] = -1
             key_arr[1] = -1
         
         elif x=='a':
-            key_arr[0] = -1
-            key_arr[1] = 1
+            key_arr[0] = 1
+            key_arr[1] = -1
         
         elif x=='d':
             key_arr[0] = -1
-            key_arr[1] = -1
+            key_arr[1] = 1
         
         else:
             key_arr[0] = 0
